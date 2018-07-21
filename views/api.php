@@ -1,6 +1,20 @@
 <?php
+/*~ переменные из контроллера $this->
+  ~ $product
+  ~*/
+if (  false && class_exists('jbdump') ) jbdump($_REQUEST,0,'$_REQUEST');
+
 $self_url = parse_url($_SERVER['REQUEST_URI']);
 $self_url = $self_url['path'];
+
+if ( ! isset($data) ) $data = array();
+if ( ! isset($json) ) $json = '';
+
+if (  false && class_exists('jbdump') ) jbdump($data,0,'$data');
+if (  false && class_exists('jbdump') ) jbdump($json,0,'$json');
+
+if (  false && class_exists('jbdump') ) jbdump(PATH_ROOT,0,'PATH_ROOT');
+
 ?>
 <h2>Примеры запросов API (разработке)</h2>
 
@@ -23,13 +37,15 @@ $self_url = $self_url['path'];
       <td>
         <form action="<?=$self_url?>" method="get">
           <input type="hidden" name="task" value="id"/>
-          <input type="text" name="id" value="<?=$_REQUEST['id']?>"/>
+          <input type="text" name="id" value="<?=@$_REQUEST['id']?>"/>
           <input type="hidden" name="test" />
           <input type="submit" value="искать" />
         </form>
       </td>
       <td>
-        <a target="_blank" title="JSON в новой вкладке" href="/_myprojects/catalog/api?task=id&id=59"><?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=id&id=59</a>
+        <a target="_blank" title="JSON в новой вкладке" href="<?=PATH_ROOT?>/api?task=id&id=59">
+          <?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=id&id=59
+        </a>
       </td>
     </tr>
     <tr valign=top>
@@ -37,13 +53,15 @@ $self_url = $self_url['path'];
       <td>
         <form action="<?=$self_url?>" method="get">
           <input type="hidden" name="task" value="title"/>
-          <input type="text" name="title" value="<?=$_REQUEST['title']?>"/>
+          <input type="text" name="title" value="<?=@$_REQUEST['title']?>"/>
           <input type="hidden" name="test" />
           <input type="submit" value="искать" />
         </form>
       </td>
       <td>
-        <a target="_blank" title="JSON в новой вкладке" href="/_myprojects/catalog/api?task="><?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=title&title=</a>
+        <a target="_blank" title="JSON в новой вкладке" href="<?=PATH_ROOT?>/api?task=title&title=мы">
+          <?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=title&title=мы
+        </a>
       </td>
     </tr>
     <tr valign=top>
@@ -51,13 +69,19 @@ $self_url = $self_url['path'];
       <td>
         <form action="<?=$self_url?>" method="get">
           <input type="hidden" name="task" value="manufacturers"/>
-          <input type="text" name="manufacturers" value="<?=$_REQUEST['manufacturers']?>"/>
+          <input type="text" name="manufacturers" value="<?=@$_REQUEST['manufacturers']?>"/>
           <input type="hidden" name="test" />
           <input type="submit" value="искать" />
         </form>
       </td>
       <td>
-        <a target="_blank" title="JSON в новой вкладке" href="/_myprojects/catalog/api?task="><?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=manufacturers&manufacturers=</a>
+        <a target="_blank" title="JSON в новой вкладке" href="<?=PATH_ROOT?>/api?task=manufacturers&manufacturers=Пр_2">
+          <?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=manufacturers&manufacturers=Пр_2
+        </a>
+        <hr>
+        <a target="_blank" title="JSON в новой вкладке" href="<?=PATH_ROOT?>/api?task=manufacturers&manufacturers=Пр_1|Пр_3">
+          <?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=manufacturers&manufacturers=Пр_1|Пр_3
+        </a>
       </td>
     </tr>
     <tr valign=top>
@@ -65,13 +89,19 @@ $self_url = $self_url['path'];
       <td>
         <form action="<?=$self_url?>" method="get">
           <input type="hidden" name="task" value="category"/>
-          <input type="text" name="category" value="<?=$_REQUEST['category']?>"/>
+          <input type="text" name="category" value="<?=@$_REQUEST['category']?>"/>
           <input type="hidden" name="test" />
           <input type="submit" value="искать" />
         </form>
       </td>
       <td>
-        <a target="_blank" title="JSON в новой вкладке" href="/_myprojects/catalog/api?task="><?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=category&category=</a>
+        <a target="_blank" title="JSON в новой вкладке" href="<?=PATH_ROOT?>/api?task=category&category=5">
+          <?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=category&category=5
+        </a>
+        <hr>
+        <a target="_blank" title="JSON в новой вкладке" href="<?=PATH_ROOT?>/api?task=category&category=5">
+          <?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=category&category=Компьютеры
+        </a>
       </td>
     </tr>
     <tr valign=top>
@@ -79,13 +109,19 @@ $self_url = $self_url['path'];
       <td>
         <form action="<?=$self_url?>" method="get">
           <input type="hidden" name="task" value="categories"/>
-          <input type="text" name="categories" value="<?=$_REQUEST['categories']?>"/>
+          <input type="text" name="categories" value="<?=@$_REQUEST['categories']?>"/>
           <input type="hidden" name="test" />
           <input type="submit" value="искать" />
         </form>
       </td>
       <td>
-        <a target="_blank" title="JSON в новой вкладке" href="/_myprojects/catalog/api?task="><?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=categories&categories=</a>
+        <a target="_blank" title="JSON в новой вкладке" href="<?=PATH_ROOT?>/api?task=categories&categories=5">
+          <?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=categories&categories=5
+        </a>
+        <hr>
+        <a target="_blank" title="JSON в новой вкладке" href="<?=PATH_ROOT?>/api?task=categories&categories=5">
+          <?php echo $_SERVER['HTTP_HOST'].PATH_ROOT.'/';?>api?task=categories&categories=Компьютеры
+        </a>
       </td>
     </tr>
   </table>
@@ -94,11 +130,11 @@ $self_url = $self_url['path'];
 <div id="api_result">
   <h3>Результат</h3>
   <h4>Массив</h4>
-  <pre>
-  <?php print_r($data);?>
-  </pre>
+  <? if ( count($data) ) {?>
+    <pre><?php print_r($data);?></pre>
+  <? }?>
   <h4>JSON</h4>
-  <pre>
-  <?php echo $json;?>
-  </pre>
+  <? if ( $json != '' ) {?>
+    <pre><?php echo $json;?></pre>
+  <? }?>
 </div>
